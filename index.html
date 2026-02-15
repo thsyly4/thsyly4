@@ -3,245 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اختبار الكيمياء - أ. عبد الرحمن العنزي</title>
+    <title>بوابة الاختبارات الرقمية | أ. عبدالرحمن العنزي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #f8fafc; --panel: #ffffff; --light-blue: #e0f2fe; --teacher-red: #dc2626; --primary: #0284c7; --success: #16a34a; --danger: #dc2626; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg); margin: 0; padding: 10px; color: #1e293b; }
-        .container { max-width: 950px; margin: 20px auto; background: var(--panel); border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #e2e8f0; }
-        
-        .header-brand { 
-            background: var(--light-blue); 
-            padding: 20px 40px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            border-bottom: 2px solid #bae6fd;
-            color: var(--teacher-red);
-            font-weight: bold;
-            font-size: 18px;
+        :root {
+            --primary: #3498db;
+            --accent-red: #d32f2f;
+            --bg-color: #f4f7f9;
+            --card-bg: #ffffff;
         }
 
-        .welcome-screen { padding: 50px 20px; text-align: center; }
-        .welcome-screen h1 { color: #0f172a; margin-bottom: 5px; }
-        .welcome-screen .sub-title { color: var(--primary); font-size: 24px; font-weight: 900; margin-bottom: 25px; }
+        * { box-sizing: border-box; }
 
-        input[type="text"] { width: 60%; padding: 16px; border: 2px solid #cbd5e1; border-radius: 15px; font-size: 18px; text-align: center; outline: none; }
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #333;
+        }
 
-        .quiz-screen { display: none; padding: 30px; }
-        .stats-bar { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 15px; font-weight: bold; background: #f1f5f9; padding: 12px; border-radius: 12px; }
+        .main-container {
+            width: 100%;
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-        .q-card { background: #fff; padding: 10px; border-radius: 15px; margin-bottom: 25px; }
-        .q-text { font-size: 22px; font-weight: bold; color: #0f172a; line-height: 1.6; }
+        /* رأس الصفحة */
+        header {
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+            background: white;
+            padding: 30px 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            border-bottom: 4px solid var(--primary);
+        }
 
-        .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        @media (max-width: 768px) { .options-grid { grid-template-columns: 1fr; } .header-brand { flex-direction: column; gap: 10px; } }
+        header h1 { font-size: 1.8rem; margin: 0; color: #2c3e50; }
+        header p { font-size: 1.3rem; margin: 10px 0; color: #555; font-weight: bold; }
         
-        .option { padding: 18px; background: #fff; border: 2px solid #e2e8f0; border-radius: 15px; cursor: pointer; transition: 0.3s; font-size: 18px; text-align: right; }
-        .option:hover { border-color: var(--primary); background: #f0f9ff; }
-        .correct { background: var(--success) !important; color: white; border-color: var(--success) !important; }
-        .wrong { background: var(--danger) !important; color: white; border-color: var(--danger) !important; }
+        /* اسم الأستاذ المطلوب: أحمر وصغير */
+        .teacher-name { 
+            color: var(--accent-red); 
+            font-size: 0.85rem; 
+            font-weight: bold; 
+            margin-top: 10px;
+        }
 
-        .feedback-box { margin-top: 25px; padding: 20px; border-radius: 15px; display: none; line-height: 1.6; border: 1px solid #bae6fd; font-size: 16px; background: var(--light-blue); color: #000000; }
-        
-        .btn { background: var(--primary); color: white; border: none; padding: 16px 50px; border-radius: 15px; cursor: pointer; font-size: 19px; font-weight: bold; margin-top: 20px; }
-        #next-btn { background: #334155; display: none; }
+        /* شريط البحث */
+        .search-area {
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 40px;
+        }
 
-        /* تنسيق الملخص النهائي */
-        #result-screen { display:none; padding: 30px; }
-        .summary-table { width: 100%; border-collapse: collapse; margin-top: 25px; font-size: 14px; background: white; }
-        .summary-table th, .summary-table td { padding: 12px; border: 1px solid #e2e8f0; text-align: right; line-height: 1.4; }
-        .summary-table th { background: #f1f5f9; color: #475569; }
-        .fb-cell { font-size: 12px; color: #444; background: #f9fbff; }
+        #searchBox {
+            width: 100%;
+            padding: 15px 25px;
+            border-radius: 50px;
+            border: 2px solid #ddd;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1rem;
+            outline: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        #searchBox:focus {
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.1);
+        }
+
+        /* الشبكة المتجاوبة بالكامل */
+        .models-grid {
+            display: grid;
+            width: 100%;
+            max-width: 1400px;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 18px;
+            padding: 25px 15px;
+            text-decoration: none;
+            color: #333;
+            border: 1px solid #edf2f7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .card .icon { font-size: 48px; margin-bottom: 15px; }
+        .card span { font-weight: bold; font-size: 1rem; text-align: center; line-height: 1.4; }
+
+        footer {
+            padding: 25px;
+            text-align: center;
+            background: #fff;
+            color: #888;
+            font-size: 0.85rem;
+            border-top: 1px solid #eee;
+        }
+
+        /* التوافق مع الجوال */
+        @media (max-width: 600px) {
+            .models-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            header h1 { font-size: 1.4rem; }
+            header p { font-size: 1.1rem; }
+            .card { padding: 20px 10px; }
+            .card .icon { font-size: 38px; }
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header-brand">
-        <div>👨‍🏫 أ. عبد الرحمن العنزي</div>
-        <div>🏫 ثانوية الأمير عبد المجيد</div>
+    <div class="main-container">
+        <header>
+            <h1>ثانوية الأمير عبدالمجيد 🏰</h1>
+            <p>بوابة الاختبارات الرقمية - التحصيلي</p>
+            <div class="teacher-name">إعداد الأستاذ: عبدالرحمن العنزي 🧑‍🏫</div>
+        </header>
+
+        <div class="search-area">
+            <input type="text" id="searchBox" placeholder="🔍 ابحث برقم أو اسم النموذج..." onkeyup="filterModels()">
+        </div>
+
+        <div class="models-grid" id="modelsGrid">
+            </div>
     </div>
 
-    <div id="start-screen" class="welcome-screen">
-        <h1>مرحباً بك يا بطل 🧪</h1>
-        <div class="sub-title">تحصيلي كيمياء</div>
-        <p style="color: #64748b; margin-bottom: 30px;">تدريبات شاملة من تجميعات يلو 2025</p>
-        <input type="text" id="student-name" placeholder="أدخل اسمك الكريم للبدء">
-        <br>
-        <button class="btn" onclick="startQuiz()">ابدأ الاختبار الآن 🚀</button>
-    </div>
+    <footer>
+        جميع الحقوق محفوظة 2026 © | ثانوية الأمير عبدالمجيد <br>
+        <span style="font-size: 0.7rem; margin-top: 5px; display: block;">تم التصميم لدعم مسيرة أبنائنا الطلاب 🚀</span>
+    </footer>
 
-    <div id="quiz-screen" class="quiz-screen">
-        <div class="stats-bar">
-            <span>👤 الطالب: <span id="display-name" style="color:var(--primary)"></span></span>
-            <span>⏱️ المتبقي: <span id="timer" style="color:var(--danger)">60</span> ثانية</span>
-        </div>
-        
-        <div class="q-card">
-            <div style="color: var(--primary); font-weight: bold; margin-bottom: 8px;" id="q-number"></div>
-            <div class="q-text" id="q-text"></div>
-        </div>
+    <script>
+        // --- قسم إدارة النماذج ---
+        // أضف أو عدل روابطك هنا بكل بساطة
+        const myModels = [
+            { title: "نموذج التحصيلي 1", link: "https://thsyly4.github.io/thsyly4/", icon: "📘" },
+            { title: "نموذج التحصيلي 2", link: "https://thsyly4.github.io/thsyly4.2/", icon: "🧪" },
+            { title: "نموذج التحصيلي 3", link: "#", icon: "📐" },
+            { title: "نموذج التحصيلي 4", link: "#", icon: "🧬" },
+            { title: "نموذج التحصيلي 5", link: "#", icon: "💻" },
+            { title: "نموذج التحصيلي 6", link: "#", icon: "🌍" },
+            { title: "نموذج التحصيلي 7", link: "#", icon: "🖊️" },
+            { title: "نموذج التحصيلي 8", link: "#", icon: "📝" },
+            { title: "نموذج التحصيلي 9", link: "#", icon: "📚" },
+            { title: "نموذج التحصيلي 10", link: "#", icon: "🔬" },
+            { title: "نموذج التحصيلي 11", link: "#", icon: "📂" },
+            { title: "نموذج التحصيلي 12", link: "#", icon: "💡" },
+        ];
 
-        <div class="options-grid" id="options-container"></div>
-        
-        <div id="feedback-box" class="feedback-box">
-            <strong id="fb-title" style="display:block; margin-bottom:5px;"></strong>
-            <span id="fb-text"></span>
-        </div>
-        
-        <div style="text-align: center;">
-            <button id="next-btn" class="btn" onclick="nextQuestion()">السؤال التالي ⬅️</button>
-        </div>
-    </div>
+        // وظيفة رسم الكروت في الصفحة
+        function displayModels() {
+            const grid = document.getElementById('modelsGrid');
+            grid.innerHTML = myModels.map(model => `
+                <a href="${model.link}" class="card">
+                    <div class="icon">${model.icon}</div>
+                    <span>${model.title}</span>
+                </a>
+            `).join('');
+        }
 
-    <div id="result-screen">
-        <div style="text-align:center;">
-            <h2 id="res-title"></h2>
-            <div id="res-score" style="font-size: 30px; font-weight: 900; color: var(--success); margin: 15px;"></div>
-        </div>
-        
-        <h3 style="border-bottom: 2px solid var(--primary); padding-bottom: 10px;">📊 ملخص الإجابات والتغذية الراجعة:</h3>
-        <table class="summary-table">
-            <thead>
-                <tr>
-                    <th style="width: 50px;">#</th>
-                    <th>السؤال</th>
-                    <th>إجابتك</th>
-                    <th>الصحيحة</th>
-                    <th>التغذية الراجعة (السبب العلمي)</th>
-                </tr>
-            </thead>
-            <tbody id="summary-body"></tbody>
-        </table>
-        <div style="text-align:center; margin-top:20px;">
-            <button class="btn" onclick="location.reload()">إعادة المحاولة 🔄</button>
-        </div>
-    </div>
-</div>
+        // وظيفة البحث الذكي
+        function filterModels() {
+            let input = document.getElementById('searchBox').value.toLowerCase();
+            let cards = document.getElementsByClassName('card');
+            for (let i = 0; i < cards.length; i++) {
+                let title = cards[i].innerText.toLowerCase();
+                if (title.includes(input)) {
+                    cards[i].style.display = "flex";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
 
-<script>
-    const questions = [
-        { q: "فرع الكيمياء الذي يقوم بدراسة المركبات التي تحتوي على الكربون؟", options: ["التحليلية", "الذرية", "الحيوية", "العضوية"], correct: 3, fb: "الكيمياء العضوية تهتم حصراً بمركبات الكربون وسلاسل الهيدروكربونات." },
-        { q: "أحد فروع علم الكيمياء الذي يستقصي تحلل مواد التغليف في البيئة:", options: ["الحيوية", "البيئية", "العضوية", "الفيزيائية"], correct: 1, fb: "الكيمياء البيئية تدرس المواد الكيميائية وعلاقتها بالمحيط الطبيعي وتأثير التلوث." },
-        { q: "فرع الكيمياء الذي يهتم بدراسة النظائر والروابط والتركيب الإلكتروني:", options: ["الحيوية", "الذرية", "التحليلية", "العضوية"], correct: 1, fb: "الكيمياء الذرية تغوص في أسرار بنية الذرة وتوزيع الإلكترونات والروابط." },
-        { q: "فرع من فروع الكيمياء يدرس المواد وتفاعلاتها وخصائصها وتغيرات الطاقة:", options: ["الذرية", "الفيزيائية", "الحيوية", "النووية"], correct: 1, fb: "الكيمياء الفيزيائية تدرس المادة من منظور فيزيائي كسرعة التفاعلات والطاقة." },
-        { q: "فرع الكيمياء الذي يقوم بدراسة التلوث والعمليات الكيميائية في الطبيعة:", options: ["التحليلية", "العضوية", "البيئية", "الذرية"], correct: 2, fb: "أي دراسة تتعلق بصحة الطبيعة أو الهواء من التلوث تندرج تحت الكيمياء البيئية." },
-        { q: "دراسة الروابط وأشكال المدارات والتركيب الالكتروني تتبع فرع الكيمياء:", options: ["التحليلية", "الذرية", "الحيوية", "العضوية"], correct: 1, fb: "المدارات والتركيب الإلكتروني هي اللبنات الأساسية للذرة لذا تتبع الكيمياء الذرية." },
-        { q: "غاز الأوزون O3 يوجد في الهواء ضمن طبقة تسمى:", options: ["الستراتوسفير", "الميزوسفير", "التروبوسفير", "الثيرموسفير"], correct: 0, fb: "يقع الأوزون في طبقة الستراتوسفير وهي التي تمتص الأشعة الضارة." },
-        { q: "عدد جزيئات الأوزون الناتجة عن 6 ذرات أكسجين:", options: ["2", "4", "1", "3"], correct: 0, fb: "جزيء الأوزون صيغته O3، نقسم 6 ذرات على 3 لنحصل على جزيئين." },
-        { q: "عدد جزيئات الأوزون الناتجة عن 12 ذرة أكسجين:", options: ["3", "2", "6", "4"], correct: 3, fb: "12 ذرة أكسجين ÷ 3 ذرات لكل جزيء أوزون = 4 جزيئات أوزون." },
-        { q: "العالم الذي تمكن من قياس كمية الأوزون في الغلاف الجوي:", options: ["رذرفورد", "دوبسون", "كروكس", "مليكان"], correct: 1, fb: "العالم 'دوبسون' هو من ابتكر جهاز القياس، لذا سميت الوحدة باسمه DU." },
-        { q: "المعدل الطبيعي لكمية الأوزون في الجو هي:", options: ["150 DU", "400 DU", "300 DU", "600 DU"], correct: 2, fb: "المعدل الطبيعي للحماية المثالية للأرض هو 300 وحدة دوبسون." },
-        { q: "الأشعة الضارة التي تمتصها طبقة الأوزون:", options: ["السينية", "فوق البنفسجية", "تحت الحمراء", "المرئية"], correct: 1, fb: "الأوزون يمتص الأشعة فوق البنفسجية (UV) التي تسبب أضراراً بالغة." },
-        { q: "ما سبب التناقص في طبقة الأوزون في الغلاف الجوي؟", options: ["مركبات CFCs", "الأكسجين", "الحرارة", "ثاني أكسيد الكربون"], correct: 0, fb: "مركبات الكلوروفلوروكربون (CFCs) هي السبب الرئيسي لثقب الأوزون." },
-        { q: "مركبات الكلوروفلوروكربون مكونة من:", options: ["Cl-F-C", "Cl-F-O", "Cl-F-Ca", "Cl-F-Cr"], correct: 0, fb: "تتكون من الكلور (Cl) والفلور (F) والكربون (C) فقط." },
-        { q: "أي التالي يمثل مقياساً لكمية المادة فقط ولا يتأثر بالجاذبية؟", options: ["الحجم", "الكتلة", "الكثافة", "الوزن"], correct: 1, fb: "الكتلة مقدار ثابت لا يتغير، بينما الوزن يتغير بتغير قوة الجاذبية." },
-        { q: "أي الآتي يُعد مادة؟", options: ["الضوء", "الصوت", "الحرارة", "الهواء"], correct: 3, fb: "الهواء مادة لأن له كتلة ويشغل حيزاً، بينما الضوء والصوت أنواع طاقة." },
-        { q: "أي الآتي لا يُعد مادة؟", options: ["الضوء", "الهواء", "الورق", "التراب"], correct: 0, fb: "الضوء طاقة ليس لها كتلة مادية، لذا لا يصنف مادة." },
-        { q: "أي الآتي لا يصنف مادة حسب التعريف العلمي؟", options: ["الماء", "الحرارة", "الهواء", "التراب"], correct: 1, fb: "الحرارة طاقة حركية وليست جسيمات مادية لها كتلة وحجم." },
-        { q: "أي الخيارات التالية تعتبر مادة؟", options: ["الضوء", "الموجات", "الحرارة", "الدخان"], correct: 3, fb: "الدخان مادة لأنه مزيج من الغازات والجسيمات الصلبة التي لها كتلة." },
-        { q: "أي الخطوات الآتية نبدأ بها الدراسة العلمية؟", options: ["الفرضية", "الاستنتاج", "الملاحظة", "نشر النتائج"], correct: 2, fb: "الملاحظة هي جمع البيانات الأولية وهي أول خطوة في أي بحث علمي." },
-        { q: "أولى خطوات الطريقة العلمية هي:", options: ["الفرضية", "طرح الأسئلة", "التجربة", "الاستنتاج"], correct: 1, fb: "بعد الملاحظة، نقوم بطرح الأسئلة لتحديد المشكلة والبدء في البحث." },
-        { q: "تفسير قابل للاختبار لظاهرة معينة:", options: ["النظرية", "الفرضية", "المبدأ", "القانون"], correct: 1, fb: "الفرضية هي تفسير مؤقت أو 'تخمين ذكي' ينتظر التجربة لإثباته." },
-        { q: "عندما يلاحظ عالم ظاهرة جديدة في الطبيعة فإنه يقوم بـ:", options: ["الاستنتاج", "صياغة فرضية", "اختبار النتائج", "تحليل النتائج"], correct: 1, fb: "الخطوة المنطقية بعد الملاحظة هي صياغة فرضية تحاول تفسير الظاهرة." },
-        { q: "لكي نثبت الفرضية نحتاج إلى:", options: ["الملاحظة", "التجريب", "الاستنتاج", "التحليل"], correct: 1, fb: "التجربة هي المحك الوحيد الذي يؤكد صحة الفرضية أو ينفيها." },
-        { q: "تفسير لظاهرة طبيعية بناء على مشاهدات واستقصاءات مع مرور الزمن:", options: ["النظرية العلمية", "القانون العلمي", "الفرضية العلمية", "الحقيقة العلمية"], correct: 0, fb: "النظرية هي أعلى درجات التفسير العلمي لأنها مدعومة بسنوات من الأدلة." }
-    ];
-
-    let currentIdx = 0; let score = 0; let timeLeft = 60; let timerInterval; let log = [];
-
-    function startQuiz() {
-        const name = document.getElementById('student-name').value;
-        if(!name.trim()) return alert("لطفاً يا بطل، اكتب اسمك أولاً.");
-        document.getElementById('display-name').innerText = name;
-        document.getElementById('start-screen').style.display = 'none';
-        document.getElementById('quiz-screen').style.display = 'block';
-        showQuestion();
-    }
-
-    function showQuestion() {
-        clearInterval(timerInterval);
-        if(currentIdx >= questions.length) return finishQuiz();
-        
-        timeLeft = 60;
-        document.getElementById('timer').innerText = timeLeft;
-        document.getElementById('q-number').innerText = `السؤال ${currentIdx + 1} من 25`;
-        document.getElementById('feedback-box').style.display = 'none';
-        document.getElementById('next-btn').style.display = 'none';
-        
-        const qData = questions[currentIdx];
-        document.getElementById('q-text').innerText = qData.q;
-        
-        const container = document.getElementById('options-container');
-        container.innerHTML = "";
-        
-        qData.options.forEach((opt, i) => {
-            const btn = document.createElement('div');
-            btn.className = 'option';
-            btn.innerText = opt;
-            btn.onclick = () => handleAnswer(i);
-            container.appendChild(btn);
-        });
-
-        timerInterval = setInterval(() => {
-            timeLeft--;
-            document.getElementById('timer').innerText = timeLeft;
-            if(timeLeft <= 0) handleAnswer(-1);
-        }, 1000);
-    }
-
-    function handleAnswer(selected) {
-        clearInterval(timerInterval);
-        const qData = questions[currentIdx];
-        const options = document.querySelectorAll('.option');
-        const isCorrect = selected === qData.correct;
-        const fbBox = document.getElementById('feedback-box');
-
-        if(isCorrect) score++;
-        log.push({ 
-            q: qData.q, 
-            user: selected === -1 ? "انتهى الوقت" : qData.options[selected], 
-            correct: qData.options[qData.correct], 
-            status: isCorrect,
-            fb: qData.fb
-        });
-
-        options.forEach((opt, i) => {
-            opt.style.pointerEvents = 'none';
-            if(i === qData.correct) opt.classList.add('correct');
-            else if(i === selected) opt.classList.add('wrong');
-        });
-
-        document.getElementById('fb-title').innerText = isCorrect ? "أحسنت! إجابة صحيحة ✅" : "إجابة خاطئة ❌";
-        document.getElementById('fb-text').innerText = qData.fb;
-        fbBox.style.display = 'block';
-        document.getElementById('next-btn').style.display = 'inline-block';
-    }
-
-    function nextQuestion() {
-        currentIdx++;
-        showQuestion();
-    }
-
-    function finishQuiz() {
-        document.getElementById('quiz-screen').style.display = 'none';
-        document.getElementById('result-screen').style.display = 'block';
-        document.getElementById('res-title').innerText = `نتيجة الطالب: ${document.getElementById('student-name').value}`;
-        document.getElementById('res-score').innerText = `لقد حصلت على: ${score} من 25`;
-        
-        const body = document.getElementById('summary-body');
-        log.forEach((item, index) => {
-            body.innerHTML += `
-                <tr>
-                    <td><b>${index + 1} من 25</b></td>
-                    <td>${item.q}</td>
-                    <td style="color:${item.status?'#16a34a':'#dc2626'}; font-weight:bold;">${item.user}</td>
-                    <td style="color:#16a34a; font-weight:bold;">${item.correct}</td>
-                    <td class="fb-cell">${item.fb}</td>
-                </tr>`;
-        });
-    }
-</script>
+        // تنفيذ الوظيفة عند التحميل
+        displayModels();
+    </script>
 
 </body>
 </html>
