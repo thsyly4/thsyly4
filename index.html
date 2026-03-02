@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة الاختبارات الرقمية | أ. عبدالرحمن العنزي</title>
+    <title>بوابة كيمياء التحصيلي 🧪</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #3498db;
-            --accent-red: #d32f2f;
+            --primary: #27ae60;
             --bg-color: #f4f7f9;
             --card-bg: #ffffff;
         }
@@ -35,7 +34,6 @@
             align-items: center;
         }
 
-        /* رأس الصفحة */
         header {
             width: 100%;
             max-width: 1200px;
@@ -49,17 +47,15 @@
         }
 
         header h1 { font-size: 1.8rem; margin: 0; color: #2c3e50; }
-        header p { font-size: 1.3rem; margin: 10px 0; color: #555; font-weight: bold; }
+        header p { font-size: 1.2rem; margin: 15px 0; color: #27ae60; font-weight: bold; }
         
-        /* اسم الأستاذ المطلوب: أحمر وصغير */
-        .teacher-name { 
-            color: var(--accent-red); 
-            font-size: 0.85rem; 
-            font-weight: bold; 
+        .slogan {
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            font-style: italic;
             margin-top: 10px;
         }
 
-        /* شريط البحث */
         .search-area {
             width: 100%;
             max-width: 500px;
@@ -76,15 +72,13 @@
             outline: none;
             text-align: center;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
         }
 
         #searchBox:focus {
             border-color: var(--primary);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.1);
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.1);
         }
 
-        /* الشبكة المتجاوبة بالكامل */
         .models-grid {
             display: grid;
             width: 100%;
@@ -116,7 +110,7 @@
         }
 
         .card .icon { font-size: 48px; margin-bottom: 15px; }
-        .card span { font-weight: bold; font-size: 1rem; text-align: center; line-height: 1.4; }
+        .card span { font-weight: bold; font-size: 1.1rem; text-align: center; }
 
         footer {
             padding: 25px;
@@ -127,14 +121,13 @@
             border-top: 1px solid #eee;
         }
 
-        /* التوافق مع الجوال */
         @media (max-width: 600px) {
             .models-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
             }
             header h1 { font-size: 1.4rem; }
-            header p { font-size: 1.1rem; }
+            header p { font-size: 1rem; }
             .card { padding: 20px 10px; }
             .card .icon { font-size: 38px; }
         }
@@ -144,37 +137,33 @@
 
     <div class="main-container">
         <header>
-            <h1>ثانوية الأمير عبدالمجيد 🏰</h1>
-            <p>بوابة الاختبارات الرقمية - التحصيلي</p>
-            <div class="teacher-name">إعداد الأستاذ: عبدالرحمن العنزي 🧑‍🏫</div>
+            <h1>بوابة الاختبارات الرقمية ⚗️</h1>
+            <p>نحو العلامة الكاملة في كيمياء التحصيلي 💯</p>
+            <div class="slogan">"الكيمياء ليست مجرد مادة، بل هي تفاعل معرفتك مع الإصرار لتحقيق النجاح" 🚀</div>
         </header>
 
         <div class="search-area">
-            <input type="text" id="searchBox" placeholder="🔍 ابحث برقم أو اسم النموذج..." onkeyup="filterModels()">
+            <input type="text" id="searchBox" placeholder="🔍 ابحث برقم النموذج..." onkeyup="filterModels()">
         </div>
 
-        <div class="models-grid" id="modelsGrid">
-            </div>
+        <div class="models-grid" id="modelsGrid"></div>
     </div>
 
     <footer>
-        جميع الحقوق محفوظة 2026 © | ثانوية الأمير عبدالمجيد <br>
-        <span style="font-size: 0.7rem; margin-top: 5px; display: block;">تم التصميم لدعم مسيرة أبنائنا الطلاب 🚀</span>
+        جميع الحقوق محفوظة 2026 © <br>
+        <span style="font-size: 0.75rem; margin-top: 5px; display: block;">مع تمنياتنا لجميع الطلاب بالتوفيق والتميز في اختبار التحصيلي ✨</span>
     </footer>
 
     <script>
-        // --- قسم إدارة النماذج ---
-        // أضف أو عدل روابطك هنا بكل بساطة
         const myModels = [
-            { title: "نموذج التحصيلي 1", link: "https://thsyly4.github.io/thsyly4.1/", icon: "📘" },
-            { title: "نموذج التحصيلي 2", link: "https://thsyly4.github.io/thsyly4.2/", icon: "🧪" },
-            { title: "نموذج التحصيلي 3", link: "https://thsyly4.github.io/aaa3/", icon: "📐" },
- { title: "نموذج التحصيلي 4", link: "https://thsyly4.github.io/thsyly4.4", icon: "📐" },
- { title: "نموذج التحصيلي 5", link: "https://thsyly4.github.io/thsyly4.5", icon: "📐" },
-
+            { title: "نموذج ١", link: "https://thsyly4.github.io/thsyly4.1/", icon: "🧪" },
+            { title: "نموذج ٢", link: "https://thsyly4.github.io/thsyly4.2/", icon: "🔬" },
+            { title: "نموذج ٣", link: "https://thsyly4.github.io/aaa3/", icon: "⚗️" },
+            { title: "نموذج ٤", link: "https://thsyly4.github.io/thsyly4.4", icon: "💧" },
+            { title: "نموذج ٥", link: "https://thsyly4.github.io/thsyly4.5", icon: "💡" },
+            { title: "نموذج ٦", link: "#", icon: "📝" }, 
         ];
 
-        // وظيفة رسم الكروت في الصفحة
         function displayModels() {
             const grid = document.getElementById('modelsGrid');
             grid.innerHTML = myModels.map(model => `
@@ -185,7 +174,6 @@
             `).join('');
         }
 
-        // وظيفة البحث الذكي
         function filterModels() {
             let input = document.getElementById('searchBox').value.toLowerCase();
             let cards = document.getElementsByClassName('card');
@@ -199,7 +187,6 @@
             }
         }
 
-        // تنفيذ الوظيفة عند التحميل
         displayModels();
     </script>
 
