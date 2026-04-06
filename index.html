@@ -3,175 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة كيمياء التحصيلي | Abdulrahman</title>
+    <title>بوابة كيمياء التحصيلي | أ. عبدالرحمن العنزي</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #27ae60;
-            --bg-color: #f4f7f9;
-            --card-bg: #ffffff;
+            --dark: #1e293b;
+            --bg: #f8fafc;
         }
 
-        * { box-sizing: border-box; }
-
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            color: #333;
+        * { box-sizing: border-box; transition: 0.3s; }
+        body { 
+            font-family: 'Tajawal', sans-serif; 
+            background: var(--bg); 
+            margin: 0; 
+            padding-top: 100px; 
         }
 
-        .main-container {
-            width: 100%;
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        /* --- شريط المساعد الذكي النحيف --- */
+        #slim-helper {
+            position: fixed; top: 0; left: 0; width: 100%;
+            background: white; border-bottom: 3px solid var(--primary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            z-index: 10000;
+            padding: 12px 0;
         }
 
-        header {
-            width: 100%;
-            max-width: 1200px;
-            text-align: center;
-            background: white;
-            padding: 30px 20px;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 40px;
-            border-bottom: 4px solid var(--primary);
+        .helper-inner {
+            max-width: 1100px; margin: 0 auto; padding: 0 20px;
+            display: flex; align-items: center; justify-content: space-between; gap: 15px;
         }
 
-        header h1 { font-size: 1.8rem; margin: 0; color: #2c3e50; }
+        .helper-tag {
+            font-weight: bold; color: var(--primary); font-size: 0.95rem;
+            min-width: fit-content;
+        }
+
+        .search-container {
+            flex-grow: 1; display: flex; align-items: center;
+            background: #f1f5f9; border: 1px solid #e2e8f0;
+            border-radius: 12px; padding: 4px 8px;
+        }
+
+        #ai-query {
+            flex-grow: 1; border: none; background: transparent;
+            padding: 8px; font-family: inherit; outline: none; font-size: 0.95rem;
+        }
+
+        .btn {
+            border: none; padding: 8px 18px; border-radius: 10px;
+            font-weight: bold; cursor: pointer; font-family: inherit;
+            font-size: 0.85rem; display: flex; align-items: center; gap: 6px;
+        }
+
+        .btn-go { background: var(--primary); color: white; }
+        .btn-cam { background: #475569; color: white; }
+        .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+        /* --- محتوى البوابة --- */
+        .content { max-width: 1100px; margin: 0 auto; padding: 20px; text-align: center; }
         
-        .author-name {
-            font-family: 'Arial', sans-serif;
-            font-size: 0.9rem;
-            color: #95a5a6;
-            letter-spacing: 1px;
-            margin-top: 5px;
+        header { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 25px; 
+            margin-bottom: 25px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border-bottom: 5px solid var(--primary);
         }
 
-        .main-subtitle { 
-            font-size: 1.1rem; 
-            margin: 15px 0; 
-            color: #27ae60; 
-            font-weight: bold; 
-        }
+        h1 { margin: 0 0 15px 0; font-size: 1.8rem; color: var(--dark); }
         
-        .slogan {
-            font-size: 0.9rem;
-            color: #7f8c8d;
-            margin-top: 15px;
-            border-top: 1px dashed #eee;
-            padding-top: 10px;
+        .school-info { color: var(--primary); font-weight: bold; font-size: 1.2rem; margin: 0; }
+        .teacher-info { color: #475569; font-size: 1.1rem; margin: 8px 0 0 0; font-weight: 500; }
+
+        /* --- قسم المبادرة الجديد --- */
+        .initiative-box {
+            background: #eefdf4;
+            border: 1px solid #c6f6d5;
+            padding: 15px 20px;
+            border-radius: 15px;
+            margin-bottom: 35px;
+            color: #2f855a;
+            font-size: 1.05rem;
             line-height: 1.6;
-        }
-
-        /* الشبكة للأقسام الثلاثة */
-        .sections-grid {
-            display: grid;
-            width: 100%;
-            max-width: 1100px;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            margin-top: 20px;
-            margin-bottom: 40px;
-        }
-
-        .section-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 40px 20px;
-            text-decoration: none;
-            color: #333;
-            border: 1px solid #edf2f7;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            gap: 10px;
         }
 
-        .section-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 12px 30px rgba(39, 174, 96, 0.15);
-        }
-
-        .section-card .icon { 
-            font-size: 60px; 
-            margin-bottom: 20px; 
-            filter: drop-shadow(0 4px 5px rgba(0,0,0,0.1));
-        }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
         
-        .section-card span { 
-            font-weight: bold; 
-            font-size: 1.2rem; 
-            text-align: center; 
-            color: #2c3e50;
+        .card { 
+            background: white; padding: 45px 20px; border-radius: 25px; 
+            text-decoration: none; color: inherit; border: 1px solid #e2e8f0;
+            display: flex; flex-direction: column; align-items: center;
         }
 
-        footer {
-            padding: 25px;
-            text-align: center;
-            background: #fff;
-            color: #888;
-            font-size: 0.85rem;
-            border-top: 1px solid #eee;
-        }
+        .card:hover { border-color: var(--primary); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(39, 174, 96, 0.08); }
+        .card-icon { font-size: 60px; margin-bottom: 20px; display: block; }
+        .card-title { font-size: 1.4rem; font-weight: bold; color: var(--dark); }
 
-        /* التوافق مع الجوال */
+        footer { margin-top: 60px; color: #94a3b8; font-size: 0.9rem; padding: 30px; }
+
         @media (max-width: 768px) {
-            .sections-grid {
-                grid-template-columns: 1fr; /* تظهر تحت بعض في الجوال */
-                max-width: 400px;
-            }
-            header h1 { font-size: 1.4rem; }
-            .section-card { padding: 30px 15px; }
+            body { padding-top: 150px; }
+            .helper-inner { flex-direction: column; gap: 10px; }
+            .search-container { width: 100%; }
+            .grid { grid-template-columns: 1fr; }
+            h1 { font-size: 1.6rem; }
+            .initiative-box { font-size: 0.95rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="main-container">
-        <header>
-            <h1>بوابة الاختبارات الرقمية 🏆</h1>
-            <div class="author-name">Abdulrahman</div>
-            <p class="main-subtitle">محطة تدريبية لتعزيز استعدادك لاختبار التحصيلي ✍️</p>
-            <div class="slogan">
-                تذكر أن هذه النماذج وسيلة للتدريب والتقييم الذاتي، <br>
-                <b>المذاكرة الشاملة هي طريقك الأساسي للإبداع.</b>
+    <div id="slim-helper">
+        <div class="helper-inner">
+            <div class="helper-tag">✨ مساعد Gemini</div>
+            
+            <div class="search-container">
+                <input type="text" id="ai-query" placeholder="اسأل عن أي معادلة أو سؤال في الكيمياء...">
+                <button class="btn btn-go" onclick="executeSearch()">تحقق الآن 🚀</button>
             </div>
-        </header>
 
-        <div class="sections-grid">
-            <a href="https://thsyly4.github.io/1/" class="section-card">
-                <div class="icon">🧪</div>
-                <span>كيمياء أول ثانوي</span>
-            </a>
-
-            <a href="https://thsyly4.github.io/2/" class="section-card">
-                <div class="icon">⚗️</div>
-                <span>كيمياء ثاني ثانوي</span>
-            </a>
-
-            <a href="https://thsyly4.github.io/3/" class="section-card">
-                <div class="icon">🔬</div>
-                <span>كيمياء ثالث ثانوي</span>
-            </a>
+            <button class="btn btn-cam" onclick="openCamera()">📸 تصوير سؤال</button>
         </div>
     </div>
 
-    <footer>
-        جميع الحقوق محفوظة 2026 © <br>
-        <span style="font-size: 0.75rem; margin-top: 5px; display: block;">مع تمنياتنا لجميع الطلاب بالتوفيق والتركيز ✨</span>
-    </footer>
+    <div class="content">
+        <header>
+            <h1>بوابة الاختبارات الرقمية 🏆</h1>
+            <p class="school-info">ثانوية الأمير عبدالمجيد بن عبدالعزيز</p>
+            <p class="teacher-info">أ. عبدالرحمن العنزي</p>
+        </header>
+
+        <div class="initiative-box">
+            <span>💡</span>
+            <span>مبادرة لرفع التحصيل الدراسي والاستعداد للاختبار التحصيلي في مادة الكيمياء</span>
+        </div>
+
+        <div class="grid">
+            <a href="https://thsyly4.github.io/1/" class="card">
+                <span class="card-icon">🧪</span>
+                <span class="card-title">كيمياء 1</span>
+            </a>
+            <a href="https://thsyly4.github.io/2/" class="card">
+                <span class="card-icon">⚗️</span>
+                <span class="card-title">كيمياء 2</span>
+            </a>
+            <a href="https://thsyly4.github.io/3/" class="card">
+                <span class="card-icon">🔬</span>
+                <span class="card-title">كيمياء 3</span>
+            </a>
+        </div>
+
+        <footer>
+            جميع الحقوق محفوظة 2026 © <br>
+            ثانوية الأمير عبدالمجيد بن عبدالعزيز | أ. عبدالرحمن العنزي
+        </footer>
+    </div>
+
+    <script>
+        const SEARCH_URL = "https://www.google.com/search?udm=50&aep=43&cud=0&qsubts=1775455999140";
+        
+        function executeSearch() {
+            const q = document.getElementById('ai-query').value.trim();
+            window.open(SEARCH_URL + (q ? "&q=" + encodeURIComponent("اشرح لي هذا السؤال الكيميائي: " + q) : ""), "_blank");
+        }
+        
+        function openCamera() { 
+            window.open(SEARCH_URL, "_blank"); 
+        }
+    </script>
 
 </body>
 </html>
