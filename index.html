@@ -1,269 +1,376 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>بوابة كيمياء التحصيلي</title>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Tajawal', sans-serif;
-    }
-    body {
-      background-color: #f4f6f9;
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-    .container {
-      width: 100%;
-      max-width: 650px;
-    }
-    .card {
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 30px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-      margin-bottom: 20px;
-      transition: all 0.3s ease;
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 25px;
-      color: #1a1a1a;
-      font-weight: 700;
-    }
-    .form-group {
-      margin-bottom: 20px;
-    }
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 500;
-      color: #555;
-    }
-    input[type="text"], input[type="password"] {
-      width: 100%;
-      padding: 14px 16px;
-      border: 1.5px solid #e1e5ee;
-      border-radius: 10px;
-      font-size: 16px;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    input[type="text"]:focus, input[type="password"]:focus {
-      border-color: #0d9488;
-    }
-    .btn {
-      width: 100%;
-      padding: 14px;
-      background-color: #0d9488;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background-color 0.2s;
-    }
-    .btn:hover {
-      background-color: #0f766e;
-    }
-    .user-header {
-      background: linear-gradient(135deg, #059669 0%, #10b981 100%);
-      color: white;
-      border-radius: 16px;
-      padding: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 24px;
-    }
-    .user-info h3 {
-      font-size: 22px;
-      margin-bottom: 4px;
-    }
-    .user-info p {
-      opacity: 0.9;
-      font-size: 14px;
-    }
-    .btn-logout {
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .btn-logout:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 16px;
-    }
-    .item-card {
-      background: white;
-      border-radius: 12px;
-      padding: 20px;
-      text-decoration: none;
-      color: #333;
-      border: 1px solid #e5e7eb;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-weight: bold;
-      font-size: 16px;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .item-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 15px rgba(0,0,0,0.05);
-      border-color: #10b981;
-    }
-    .footer {
-      text-align: center;
-      margin-top: 30px;
-      color: #888;
-      font-size: 13px;
-    }
-    .hidden {
-      display: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوابة كيمياء التحصيلي | أ. عبدالرحمن العنزي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #27ae60;
+            --dark: #1e293b;
+            --bg: #f8fafc;
+        }
+
+        * { box-sizing: border-box; transition: 0.3s; }
+        body { 
+            font-family: 'Tajawal', sans-serif; 
+            background: var(--bg); 
+            margin: 0; 
+            padding-top: 100px; 
+        }
+
+        /* --- شاشة تسجيل الدخول --- */
+        #login-section {
+            max-width: 420px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--primary);
+            text-align: center;
+        }
+
+        .login-header {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: right;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: #475569;
+            font-weight: bold;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            outline: none;
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        .input-group input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.15);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn-login:hover {
+            opacity: 0.9;
+        }
+
+        /* --- شريط المساعد الذكي النحيف --- */
+        #slim-helper {
+            position: fixed; top: 0; left: 0; width: 100%;
+            background: white; border-bottom: 3px solid var(--primary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            z-index: 10000;
+            padding: 12px 0;
+        }
+
+        .helper-inner {
+            max-width: 1100px; margin: 0 auto; padding: 0 20px;
+            display: flex; align-items: center; justify-content: space-between; gap: 15px;
+        }
+
+        .helper-tag {
+            font-weight: bold; color: var(--primary); font-size: 0.95rem;
+            min-width: fit-content;
+        }
+
+        .search-container {
+            flex-grow: 1; display: flex; align-items: center;
+            background: #f1f5f9; border: 1px solid #e2e8f0;
+            border-radius: 12px; padding: 4px 8px;
+        }
+
+        #ai-query {
+            flex-grow: 1; border: none; background: transparent;
+            padding: 8px; font-family: inherit; outline: none; font-size: 0.95rem;
+        }
+
+        .btn {
+            border: none; padding: 8px 18px; border-radius: 10px;
+            font-weight: bold; cursor: pointer; font-family: inherit;
+            font-size: 0.85rem; display: flex; align-items: center; gap: 6px;
+        }
+
+        .btn-go { background: var(--primary); color: white; }
+        .btn-cam { background: #475569; color: white; }
+        .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+        /* --- محتوى البوابة --- */
+        .content { max-width: 1100px; margin: 0 auto; padding: 20px; text-align: center; }
+        
+        header { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 25px; 
+            margin-bottom: 25px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border-bottom: 5px solid var(--primary);
+            position: relative;
+        }
+
+        h1 { margin: 0 0 15px 0; font-size: 1.8rem; color: var(--dark); }
+        
+        .school-info { color: var(--primary); font-weight: bold; font-size: 1.2rem; margin: 0; }
+        .teacher-info { color: #475569; font-size: 1.1rem; margin: 8px 0 0 0; font-weight: 500; }
+        
+        .student-welcome {
+            margin-top: 10px;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.05rem;
+        }
+
+        .btn-logout {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #fee2e2;
+            color: #ef4444;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .initiative-box {
+            background: #eefdf4;
+            border: 1px solid #c6f6d5;
+            padding: 15px 20px;
+            border-radius: 15px;
+            margin-bottom: 35px;
+            color: #2f855a;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 25px; 
+        } 
+        
+        .card { 
+            background: white; padding: 45px 20px; border-radius: 25px; 
+            text-decoration: none; color: inherit; border: 1px solid #e2e8f0;
+            display: flex; flex-direction: column; align-items: center;
+            min-height: 220px; justify-content: center;
+        }
+
+        .card:hover { border-color: var(--primary); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(39, 174, 96, 0.08); }
+        .card-icon { font-size: 60px; margin-bottom: 20px; display: block; }
+        .card-title { font-size: 1.3rem; font-weight: bold; color: var(--dark); line-height: 1.4; }
+
+        footer { margin-top: 60px; color: #94a3b8; font-size: 0.9rem; padding: 30px; }
+
+        .hidden { display: none !important; }
+
+        @media (max-width: 992px) {
+            .grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            body { padding-top: 150px; }
+            .helper-inner { flex-direction: column; gap: 10px; }
+            .search-container { width: 100%; }
+            .grid { grid-template-columns: 1fr; }
+            h1 { font-size: 1.6rem; }
+            .initiative-box { font-size: 0.95rem; }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="container">
     <!-- شاشة تسجيل الدخول -->
-    <div id="loginSection" class="card">
-      <h2>تسجيل دخول الطالب 🎓</h2>
-      <form id="loginForm">
-        <div class="form-group">
-          <label>الرقم الأكاديمي / الهوية</label>
-          <input type="text" id="studentId" required placeholder="أدخل الرقم الأكاديمي">
+    <div id="login-section">
+        <div class="login-header">تسجيل دخول الطالب 🎓</div>
+        <div class="input-group">
+            <label>الرقم الأكاديمي</label>
+            <input type="text" id="student-id" placeholder="أدخل الرقم الأكاديمي">
         </div>
-        <div class="form-group">
-          <label>كلمة المرور</label>
-          <input type="password" id="studentPass" required placeholder="أدخل كلمة المرور">
+        <div class="input-group">
+            <label>كلمة المرور</label>
+            <input type="password" id="student-pass" placeholder="أدخل كلمة المرور">
         </div>
-        <button type="submit" class="btn" id="submitBtn">دخول</button>
-      </form>
+        <button class="btn-login" id="login-btn" onclick="loginStudent()">دخول البوابة 🚀</button>
     </div>
 
-    <!-- شاشة البوابة والروابط -->
-    <div id="portalSection" class="hidden">
-      <div class="user-header">
-        <div class="user-info">
-          <h3>أهلاً بك، <span id="displayStudentName">طالب</span> 👋</h3>
-          <p>مرحباً بك في بوابة اختبارات التحصيلي والكيمياء</p>
+    <!-- المحتوى الرئيسي للبوابة -->
+    <div id="portal-section" class="hidden">
+        <div id="slim-helper">
+            <div class="helper-inner">
+                <div class="helper-tag">✨ مساعد Gemini</div>
+                
+                <div class="search-container">
+                    <input type="text" id="ai-query" placeholder="اسأل عن أي معادلة أو سؤال في الكيمياء...">
+                    <button class="btn btn-go" onclick="executeSearch()">تحقق الآن 🚀</button>
+                </div>
+
+                <button class="btn btn-cam" onclick="openCamera()">📸 تصوير سؤال</button>
+            </div>
         </div>
-        <button class="btn-logout" onclick="logout()">خروج</button>
-      </div>
 
-      <div class="grid">
-        <a href="https://thsyly4.github.io/thsyly/" target="_blank" class="item-card">
-          <span>🧪 كيمياء 1</span>
-          <span>✨</span>
-        </a>
-        <a href="https://thsyly4.github.io/thsyly/" target="_blank" class="item-card">
-          <span>⚗️ كيمياء 2</span>
-          <span>✨</span>
-        </a>
-        <a href="https://thsyly4.github.io/thsyly/" target="_blank" class="item-card">
-          <span>🔬 كيمياء 3</span>
-          <span>✨</span>
-        </a>
-        <a href="https://thsyly4.github.io/thsyly/" target="_blank" class="item-card">
-          <span>📚 تحصيلي كيمياء</span>
-          <span>✨</span>
-        </a>
-        <a href="https://e3bd.github.io/404/" target="_blank" class="item-card">
-          <span>⚡ اختبار تحصيلي - فيزياء أ. إبراهيم الاسمري</span>
-          <span>✨</span>
-        </a>
-      </div>
+        <div class="content">
+            <header>
+                <button class="btn-logout" onclick="logoutStudent()">تسجيل خروج</button>
+                <h1>بوابة الاختبارات الرقمية 🏆</h1>
+                <p class="school-info">ثانوية الأمير عبدالمجيد بن عبدالعزيز</p>
+                <p class="teacher-info">أ. عبدالرحمن العنزي</p>
+                <div class="student-welcome" id="student-welcome-msg"></div>
+            </header>
+
+            <div class="initiative-box">
+                <span>💡</span>
+                <span>مبادرة لرفع التحصيل الدراسي والاستعداد للاختبار التحصيلي في مادة الكيمياء</span>
+            </div>
+
+            <div class="grid">
+                <a href="https://thsyly4.github.io/1/" class="card">
+                    <span class="card-icon">🧪</span>
+                    <span class="card-title">كيمياء 1</span>
+                </a>
+                <a href="https://thsyly4.github.io/2/" class="card">
+                    <span class="card-icon">⚗️</span>
+                    <span class="card-title">كيمياء 2</span>
+                </a>
+                <a href="https://thsyly4.github.io/3/" class="card">
+                    <span class="card-icon">🔬</span>
+                    <span class="card-title">كيمياء 3</span>
+                </a>
+
+                <!-- الأيقونات الجديدة مع الروابط المحدثة -->
+                <a href="https://thsyly4.github.io/q/" class="card">
+                    <span class="card-icon">📚</span>
+                    <span class="card-title">اختبار تحصيلي - كيمياء</span>
+                </a>
+                <a href="https://thsyly4.github.io/F.ib/" class="card">
+                    <span class="card-icon">⚡</span>
+                    <span class="card-title">اختبار تحصيلي - فيزياء أ. إبراهيم الاسمري</span>
+                </a>
+            </div>
+
+            <footer>
+                جميع الحقوق محفوظة 2026 © <br>
+                ثانوية الأمير عبدالمجيد بن عبدالعزيز | أ. عبدالرحمن العنزي
+            </footer>
+        </div>
     </div>
 
-    <div class="footer">
-      © جميع الحقوق محفوظة 2026<br>
-      ثانوية الأمير عبدالمجيد بن عبدالعزيز | أ. عبدالرحمن العنزي
-    </div>
-  </div>
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwwjo2NhM2NC_dBgEefBg1D6mCPvSOQ_Eq3zOvWdmwxrf4kMexpX09wfabv-d_ofUhAbw/exec";
+        const SEARCH_URL = "https://www.google.com/search?udm=50&aep=43&cud=0&qsubts=1775455999140";
 
-  <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwwjo2NhM2NC_dBgEefBg1D6mCPvSOQ_Eq3zOvWdmwxrf4kMexpX09wfabv-d_ofUhAbw/exec";
+        window.onload = function() {
+            const savedName = localStorage.getItem('chem_student_name');
+            if (savedName) {
+                showPortal(savedName);
+            }
+        };
 
-    // التحقق من وجود جلسة سابقة
-    window.onload = function() {
-      const savedName = localStorage.getItem("studentName");
-      if (savedName) {
-        showPortal(savedName);
-      }
-    };
+        function loginStudent() {
+            const id = document.getElementById('student-id').value.trim();
+            const pass = document.getElementById('student-pass').value.trim();
+            const btn = document.getElementById('login-btn');
 
-    document.getElementById("loginForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      
-      const id = document.getElementById("studentId").value.trim();
-      const pass = document.getElementById("studentPass").value.trim();
-      const submitBtn = document.getElementById("submitBtn");
+            if (!id || !pass) {
+                alert("يرجى إدخال الرقم الأكاديمي وكلمة المرور");
+                return;
+            }
 
-      submitBtn.disabled = true;
-      submitBtn.innerText = "جاري التحقق...";
+            btn.innerText = "جاري التحقق...";
+            btn.disabled = true;
 
-      const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
-      
-      window[callbackName] = function(data) {
-        delete window[callbackName];
-        document.body.removeChild(script);
-        submitBtn.disabled = false;
-        submitBtn.innerText = "دخول";
+            const callbackName = 'authCB_' + Math.floor(Math.random() * 1000000);
 
-        if (data.success) {
-          localStorage.setItem("studentName", data.name);
-          showPortal(data.name);
-        } else {
-          alert(data.message || "بيانات الدخول غير صحيحة");
+            window[callbackName] = function(response) {
+                btn.innerText = "دخول البوابة 🚀";
+                btn.disabled = false;
+
+                delete window[callbackName];
+                const scriptTag = document.getElementById(callbackName);
+                if (scriptTag) scriptTag.remove();
+
+                if (response && response.success) {
+                    localStorage.setItem('chem_student_name', response.name);
+                    showPortal(response.name);
+                } else {
+                    alert("الرقم الأكاديمي أو كلمة المرور غير صحيحة");
+                }
+            };
+
+            const script = document.createElement('script');
+            script.id = callbackName;
+            script.src = `${SCRIPT_URL}?id=${encodeURIComponent(id)}&pass=${encodeURIComponent(pass)}&callback=${callbackName}`;
+            
+            script.onerror = function() {
+                btn.innerText = "دخول البوابة 🚀";
+                btn.disabled = false;
+                alert("حدث خطأ في الاتصال بالخادم");
+            };
+
+            document.body.appendChild(script);
         }
-      };
 
-      const script = document.createElement('script');
-      script.src = `${SCRIPT_URL}?id=${encodeURIComponent(id)}&pass=${encodeURIComponent(pass)}&callback=${callbackName}`;
-      
-      script.onerror = function() {
-        delete window[callbackName];
-        document.body.removeChild(script);
-        submitBtn.disabled = false;
-        submitBtn.innerText = "دخول";
-        alert("حدث خطأ في الاتصال بالجدول. يرجى التأكد من الاتصال.");
-      };
+        function showPortal(name) {
+            document.getElementById('login-section').classList.add('hidden');
+            document.getElementById('portal-section').classList.remove('hidden');
+            document.getElementById('student-welcome-msg').innerText = "أهلاً بك الطالب: " + name;
+        }
 
-      document.body.appendChild(script);
-    });
+        function logoutStudent() {
+            localStorage.removeItem('chem_student_name');
+            document.getElementById('portal-section').classList.add('hidden');
+            document.getElementById('login-section').classList.remove('hidden');
+            document.getElementById('student-id').value = '';
+            document.getElementById('student-pass').value = '';
+        }
 
-    function showPortal(name) {
-      document.getElementById("loginSection").classList.add("hidden");
-      document.getElementById("portalSection").classList.remove("hidden");
-      document.getElementById("displayStudentName").innerText = name;
-    }
+        function executeSearch() {
+            const q = document.getElementById('ai-query').value.trim();
+            window.open(SEARCH_URL + (q ? "&q=" + encodeURIComponent("اشرح لي هذا سؤال: " + q) : ""), "_blank");
+        }
+        
+        function openCamera() { 
+            window.open(SEARCH_URL, "_blank"); 
+        }
+    </script>
 
-    function logout() {
-      localStorage.removeItem("studentName");
-      document.getElementById("portalSection").classList.add("hidden");
-      document.getElementById("loginSection").classList.remove("hidden");
-      document.getElementById("studentId").value = "";
-      document.getElementById("studentPass").value = "";
-    }
-  </script>
 </body>
 </html>
