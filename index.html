@@ -1,335 +1,269 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة كيمياء التحصيلي</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #10b981;
-            --primary-dark: #059669;
-            --secondary: #3b82f6;
-            --bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text: #1e293b;
-            --text-light: #64748b;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Cairo', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 480px;
-        }
-
-        /* كارت تسجيل الدخول */
-        .login-card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
-            border: 1px solid #e2e8f0;
-            text-align: center;
-        }
-
-        .login-title {
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            color: #0f172a;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-            text-align: right;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            font-size: 1rem;
-            outline: none;
-            transition: all 0.2s;
-        }
-
-        .form-control:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
-        }
-
-        .btn-submit {
-            width: 100%;
-            padding: 14px;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.05rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .btn-submit:hover {
-            background-color: var(--primary-dark);
-        }
-
-        .btn-submit:disabled {
-            background-color: #9ca3af;
-            cursor: not-allowed;
-        }
-
-        .error-message {
-            color: #ef4444;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-top: 10px;
-            display: none;
-        }
-
-        /* محتوى البوابة */
-        .portal-content {
-            display: none;
-            width: 100%;
-            max-width: 800px;
-        }
-
-        .welcome-box {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            margin-bottom: 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logout-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background 0.2s;
-        }
-
-        .logout-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .grid-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 15px;
-        }
-
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 16px;
-            border: 1px solid #e2e8f0;
-            text-decoration: none;
-            color: var(--text);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
-        }
-
-        .card-icon {
-            font-size: 1.8rem;
-        }
-
-        .card-title {
-            font-weight: 700;
-        }
-
-        footer {
-            margin-top: 40px;
-            text-align: center;
-            color: var(--text-light);
-            font-size: 0.85rem;
-            line-height: 1.6;
-        }
-
-        /* سبينر التحميل */
-        .spinner {
-            display: none;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,0.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 0.8s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بوابة كيمياء التحصيلي</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Tajawal', sans-serif;
+    }
+    body {
+      background-color: #f4f6f9;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      width: 100%;
+      max-width: 650px;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #1a1a1a;
+      font-weight: 700;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #555;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1.5px solid #e1e5ee;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input[type="text"]:focus, input[type="password"]:focus {
+      border-color: #0d9488;
+    }
+    .btn {
+      width: 100%;
+      padding: 14px;
+      background-color: #0d9488;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .btn:hover {
+      background-color: #0f766e;
+    }
+    .user-header {
+      background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+      color: white;
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .user-info h3 {
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+    .user-info p {
+      opacity: 0.9;
+      font-size: 14px;
+    }
+    .btn-logout {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .btn-logout:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+    .item-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      text-decoration: none;
+      color: #333;
+      border: 1px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: bold;
+      font-size: 16px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .item-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+      border-color: #10b981;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      color: #888;
+      font-size: 13px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container" id="login-container">
-        <div class="login-card">
-            <h2 class="login-title">تسجيل دخول الطالب 🎓</h2>
-            
-            <div class="form-group">
-                <label>الرقم الأكاديمي / الهوية</label>
-                <input type="text" id="student-id" class="form-control" placeholder="أدخل الرقم الأكاديمي" autocomplete="off">
-            </div>
-
-            <div class="form-group">
-                <label>كلمة المرور</label>
-                <input type="password" id="student-pass" class="form-control" placeholder="أدخل كلمة المرور">
-            </div>
-
-            <button class="btn-submit" id="btn-login" onclick="loginStudent()">
-                <div class="spinner" id="btn-spinner"></div>
-                <span id="btn-text">دخول البوابة 🚀</span>
-            </button>
-
-            <div class="error-message" id="login-error">الرقم الأكاديمي أو كلمة المرور غير صحيحة</div>
+  <div class="container">
+    <!-- شاشة تسجيل الدخول -->
+    <div id="loginSection" class="card">
+      <h2>تسجيل دخول الطالب 🎓</h2>
+      <form id="loginForm">
+        <div class="form-group">
+          <label>الرقم الأكاديمي / الهوية</label>
+          <input type="text" id="studentId" required placeholder="أدخل الرقم الأكاديمي">
         </div>
+        <div class="form-group">
+          <label>كلمة المرور</label>
+          <input type="password" id="studentPass" required placeholder="أدخل كلمة المرور">
+        </div>
+        <button type="submit" class="btn" id="submitBtn">دخول</button>
+      </form>
     </div>
 
-    <div class="portal-content" id="portal-container">
-        <div class="welcome-box">
-            <div>
-                <h2>أهلاً بك، <span id="user-display-name">طالبنا العزيز</span> 👋</h2>
-                <p>مرحباً بك في بوابة اختبارات التحصيلي</p>
-            </div>
-            <button class="logout-btn" onclick="logoutStudent()">خروج</button>
+    <!-- شاشة البوابة والروابط -->
+    <div id="portalSection" class="hidden">
+      <div class="user-header">
+        <div class="user-info">
+          <h3>أهلاً بك، <span id="displayStudentName">طالب</span> 👋</h3>
+          <p>مرحباً بك في بوابة اختبارات التحصيلي والكيمياء</p>
         </div>
+        <button class="btn-logout" onclick="logout()">خروج</button>
+      </div>
 
-        <div class="grid-cards">
-            <a href="https://thsyly4.github.io/F.ib/" class="card">
-                <span class="card-icon">✨</span>
-                <span class="card-title">اختبار تحصيلي - فيزياء أ. إبراهيم الاسمري</span>
-            </a>
-        </div>
+      <div class="grid">
+        <a href="https://thsyly4.github.io/thsyly/" target="_blank" class="item-card">
+          <span>🧪 كيمياء 1</span>
+          <span>✨</span>
+        </a>
+        <a href="https://thsyly4.github.io/thsyly/" target="_blank" class="item-card">
+          <span>⚗️ كيمياء 2</span>
+          <span>✨</span>
+        </a>
+        <a href="https://thsyly4.github.io/thsyly/" target="_blank" class="item-card">
+          <span>🔬 كيمياء 3</span>
+          <span>✨</span>
+        </a>
+        <a href="https://thsyly4.github.io/thsyly/" target="_blank" class="item-card">
+          <span>📚 تحصيلي كيمياء</span>
+          <span>✨</span>
+        </a>
+        <a href="https://e3bd.github.io/404/" target="_blank" class="item-card">
+          <span>⚡ اختبار تحصيلي - فيزياء أ. إبراهيم الاسمري</span>
+          <span>✨</span>
+        </a>
+      </div>
     </div>
 
-    <footer>
-        © جميع الحقوق محفوظة 2026 <br>
-        ثانوية الأمير عبدالمجيد بن عبدالعزيز | أ. عبدالرحمن العنزي
-    </footer>
+    <div class="footer">
+      © جميع الحقوق محفوظة 2026<br>
+      ثانوية الأمير عبدالمجيد بن عبدالعزيز | أ. عبدالرحمن العنزي
+    </div>
+  </div>
 
-    <script>
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwwjo2NhM2NC_dBgEefBg1D6mCPvSOQ_Eq3zOvWdmwxrf4kMexpX09wfabv-d_ofUhAbw/exec";
+  <script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwwjo2NhM2NC_dBgEefBg1D6mCPvSOQ_Eq3zOvWdmwxrf4kMexpX09wfabv-d_ofUhAbw/exec";
 
-        window.onload = function() {
-            const savedName = localStorage.getItem('chemistry_student_name');
-            if (savedName) {
-                showPortal(savedName);
-            }
-        };
+    // التحقق من وجود جلسة سابقة
+    window.onload = function() {
+      const savedName = localStorage.getItem("studentName");
+      if (savedName) {
+        showPortal(savedName);
+      }
+    };
 
-        function loginStudent() {
-            const idInput = document.getElementById('student-id').value.trim();
-            const passInput = document.getElementById('student-pass').value.trim();
-            const errorDiv = document.getElementById('login-error');
-            const btnText = document.getElementById('btn-text');
-            const spinner = document.getElementById('btn-spinner');
-            const btnLogin = document.getElementById('btn-login');
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      const id = document.getElementById("studentId").value.trim();
+      const pass = document.getElementById("studentPass").value.trim();
+      const submitBtn = document.getElementById("submitBtn");
 
-            errorDiv.style.display = 'none';
+      submitBtn.disabled = true;
+      submitBtn.innerText = "جاري التحقق...";
 
-            if (!idInput || !passInput) {
-                alert("يرجى إدخال الرقم الأكاديمي وكلمة المرور.");
-                return;
-            }
+      const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
+      
+      window[callbackName] = function(data) {
+        delete window[callbackName];
+        document.body.removeChild(script);
+        submitBtn.disabled = false;
+        submitBtn.innerText = "دخول";
 
-            btnText.innerText = "جاري التحقق...";
-            spinner.style.display = "block";
-            btnLogin.disabled = true;
-
-            const callbackName = 'handleAuth_' + Math.floor(Math.random() * 1000000);
-
-            window[callbackName] = function(data) {
-                btnText.innerText = "دخول البوابة 🚀";
-                spinner.style.display = "none";
-                btnLogin.disabled = false;
-                
-                delete window[callbackName];
-                const oldScript = document.getElementById(callbackName);
-                if (oldScript) oldScript.remove();
-
-                if (data && data.success) {
-                    localStorage.setItem('chemistry_student_name', data.name);
-                    showPortal(data.name);
-                } else {
-                    errorDiv.style.display = 'block';
-                }
-            };
-
-            const script = document.createElement('script');
-            script.id = callbackName;
-            script.src = `${SCRIPT_URL}?id=${encodeURIComponent(idInput)}&pass=${encodeURIComponent(passInput)}&callback=${callbackName}`;
-            
-            script.onerror = function() {
-                btnText.innerText = "دخول البوابة 🚀";
-                spinner.style.display = "none";
-                btnLogin.disabled = false;
-                alert("حدث خطأ في الاتصال بالجدول. يرجى التأكد من الاتصال.");
-            };
-
-            document.body.appendChild(script);
+        if (data.success) {
+          localStorage.setItem("studentName", data.name);
+          showPortal(data.name);
+        } else {
+          alert(data.message || "بيانات الدخول غير صحيحة");
         }
+      };
 
-        function showPortal(name) {
-            document.getElementById('login-container').style.display = 'none';
-            document.getElementById('portal-container').style.display = 'block';
-            document.getElementById('user-display-name').innerText = name;
-        }
+      const script = document.createElement('script');
+      script.src = `${SCRIPT_URL}?id=${encodeURIComponent(id)}&pass=${encodeURIComponent(pass)}&callback=${callbackName}`;
+      
+      script.onerror = function() {
+        delete window[callbackName];
+        document.body.removeChild(script);
+        submitBtn.disabled = false;
+        submitBtn.innerText = "دخول";
+        alert("حدث خطأ في الاتصال بالجدول. يرجى التأكد من الاتصال.");
+      };
 
-        function logoutStudent() {
-            localStorage.removeItem('chemistry_student_name');
-            document.getElementById('portal-container').style.display = 'none';
-            document.getElementById('login-container').style.display = 'block';
-            document.getElementById('student-id').value = '';
-            document.getElementById('student-pass').value = '';
-        }
-    </script>
+      document.body.appendChild(script);
+    });
+
+    function showPortal(name) {
+      document.getElementById("loginSection").classList.add("hidden");
+      document.getElementById("portalSection").classList.remove("hidden");
+      document.getElementById("displayStudentName").innerText = name;
+    }
+
+    function logout() {
+      localStorage.removeItem("studentName");
+      document.getElementById("portalSection").classList.add("hidden");
+      document.getElementById("loginSection").classList.remove("hidden");
+      document.getElementById("studentId").value = "";
+      document.getElementById("studentPass").value = "";
+    }
+  </script>
 </body>
 </html>
