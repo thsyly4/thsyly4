@@ -12,7 +12,11 @@
             --bg: #f8fafc;
         }
 
-        * { box-sizing: border-box; transition: 0.3s; }
+        * { 
+            box-sizing: border-box; 
+            transition: all 0.3s ease; 
+        }
+        
         body { 
             font-family: 'Tajawal', sans-serif; 
             background: var(--bg); 
@@ -20,40 +24,182 @@
             padding-top: 100px; 
         }
 
-        /* --- شريط المساعد الذكي النحيف --- */
+        /* --- شاشة تسجيل الدخول --- */
+        #login-modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(30, 41, 59, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 20000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 25px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            border-top: 6px solid var(--primary);
+        }
+
+        .login-card h2 {
+            color: var(--dark);
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.6rem;
+        }
+
+        .login-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .login-input:focus {
+            border-color: var(--primary);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-submit:hover {
+            opacity: 0.95;
+            transform: translateY(-2px);
+        }
+
+        #login-error {
+            color: #e74c3c;
+            font-size: 0.88rem;
+            margin-top: 12px;
+            display: none;
+            font-weight: bold;
+        }
+
+        .spinner {
+            display: none;
+            width: 18px;
+            height: 18px;
+            border: 3px solid #ffffff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* --- شريط المساعد الذكي --- */
         #slim-helper {
-            position: fixed; top: 0; left: 0; width: 100%;
-            background: white; border-bottom: 3px solid var(--primary);
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%;
+            background: white; 
+            border-bottom: 3px solid var(--primary);
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             z-index: 10000;
             padding: 12px 0;
         }
 
         .helper-inner {
-            max-width: 1100px; margin: 0 auto; padding: 0 20px;
-            display: flex; align-items: center; justify-content: space-between; gap: 15px;
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 20px;
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            gap: 15px;
         }
 
         .helper-tag {
-            font-weight: bold; color: var(--primary); font-size: 0.95rem;
-            min-width: fit-content;
+            font-weight: bold; 
+            color: var(--primary); 
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .user-welcome {
+            font-size: 0.85rem;
+            color: #475569;
+            background: #f1f5f9;
+            padding: 4px 10px;
+            border-radius: 8px;
+            display: none;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .logout-link {
+            color: #e74c3c;
+            cursor: pointer;
+            text-decoration: underline;
+            font-size: 0.8rem;
         }
 
         .search-container {
-            flex-grow: 1; display: flex; align-items: center;
-            background: #f1f5f9; border: 1px solid #e2e8f0;
-            border-radius: 12px; padding: 4px 8px;
+            flex-grow: 1; 
+            display: flex; 
+            align-items: center;
+            background: #f1f5f9; 
+            border: 1px solid #e2e8f0;
+            border-radius: 12px; 
+            padding: 4px 8px;
         }
 
         #ai-query {
-            flex-grow: 1; border: none; background: transparent;
-            padding: 8px; font-family: inherit; outline: none; font-size: 0.95rem;
+            flex-grow: 1; 
+            border: none; 
+            background: transparent;
+            padding: 8px; 
+            font-family: inherit; 
+            outline: none; 
+            font-size: 0.95rem;
         }
 
         .btn {
-            border: none; padding: 8px 18px; border-radius: 10px;
-            font-weight: bold; cursor: pointer; font-family: inherit;
-            font-size: 0.85rem; display: flex; align-items: center; gap: 6px;
+            border: none; 
+            padding: 8px 18px; 
+            border-radius: 10px;
+            font-weight: bold; 
+            cursor: pointer; 
+            font-family: inherit;
+            font-size: 0.85rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 6px;
         }
 
         .btn-go { background: var(--primary); color: white; }
@@ -61,7 +207,12 @@
         .btn:hover { opacity: 0.9; transform: translateY(-1px); }
 
         /* --- محتوى البوابة --- */
-        .content { max-width: 1100px; margin: 0 auto; padding: 20px; text-align: center; }
+        .content { 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            text-align: center; 
+        }
         
         header { 
             background: white; 
@@ -73,7 +224,6 @@
         }
 
         h1 { margin: 0 0 15px 0; font-size: 1.8rem; color: var(--dark); }
-        
         .school-info { color: var(--primary); font-weight: bold; font-size: 1.2rem; margin: 0; }
         .teacher-info { color: #475569; font-size: 1.1rem; margin: 8px 0 0 0; font-weight: 500; }
 
@@ -82,13 +232,11 @@
             border: 1px solid #c6f6d5;
             padding: 15px 20px;
             border-radius: 15px;
-            margin-bottom: 35px;
+            margin: 0 auto 35px auto;
             color: #2f855a;
             font-size: 1.05rem;
             line-height: 1.6;
             max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -102,13 +250,24 @@
         }
         
         .card { 
-            background: white; padding: 45px 20px; border-radius: 25px; 
-            text-decoration: none; color: inherit; border: 1px solid #e2e8f0;
-            display: flex; flex-direction: column; align-items: center;
-            min-height: 220px; justify-content: center;
+            background: white; 
+            padding: 45px 20px; 
+            border-radius: 25px; 
+            text-decoration: none; 
+            color: inherit; 
+            border: 1px solid #e2e8f0;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center;
+            min-height: 220px; 
+            justify-content: center;
         }
 
-        .card:hover { border-color: var(--primary); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(39, 174, 96, 0.08); }
+        .card:hover { 
+            border-color: var(--primary); 
+            transform: translateY(-10px); 
+            box-shadow: 0 20px 40px rgba(39, 174, 96, 0.08); 
+        }
         .card-icon { font-size: 60px; margin-bottom: 20px; display: block; }
         .card-title { font-size: 1.3rem; font-weight: bold; color: var(--dark); line-height: 1.4; }
 
@@ -130,12 +289,33 @@
 </head>
 <body>
 
+    <!-- نافذة تسجيل الدخول -->
+    <div id="login-modal">
+        <div class="login-card">
+            <h2>تسجيل دخول الطالب 🎓</h2>
+            <p>أدخل الرقم الأكاديمي وكلمة المرور الخاصة بك</p>
+            <input type="text" id="student-id" class="login-input" placeholder="الرقم الأكاديمي / الهوية" required>
+            <input type="password" id="student-pass" class="login-input" placeholder="كلمة المرور" required>
+            <button class="btn-submit" id="btn-login" onclick="loginStudent()">
+                <span id="btn-text">دخول البوابة 🚀</span>
+                <div class="spinner" id="btn-spinner"></div>
+            </button>
+            <div id="login-error">الرقم الأكاديمي أو كلمة المرور غير صحيحة!</div>
+        </div>
+    </div>
+
+    <!-- شريط المساعد الذكي -->
     <div id="slim-helper">
         <div class="helper-inner">
             <div class="helper-tag">✨ مساعد Gemini</div>
             
+            <div id="user-display" class="user-welcome">
+                👋 أهلاً: <strong id="student-label"></strong>
+                <span class="logout-link" onclick="logoutStudent()">(خروج)</span>
+            </div>
+
             <div class="search-container">
-                <input type="text" id="ai-query" placeholder="اسأل عن أي معادلة أو سؤال في الكيمياء...">
+                <input type="text" id="ai-query" placeholder="اسأل عن أي معادلة أو سؤال في الكيمياء..." onkeypress="handleKeyPress(event)">
                 <button class="btn btn-go" onclick="executeSearch()">تحقق الآن 🚀</button>
             </div>
 
@@ -161,7 +341,7 @@
                 <span class="card-title">كيمياء 1</span>
             </a>
             <a href="https://thsyly4.github.io/2/" class="card">
-                <span class="card-icon">⚗️</span>
+                <span class="card-icon">⚗</span>
                 <span class="card-title">كيمياء 2</span>
             </a>
             <a href="https://thsyly4.github.io/3/" class="card">
@@ -169,7 +349,6 @@
                 <span class="card-title">كيمياء 3</span>
             </a>
 
-            <!-- الأيقونات الجديدة مع الروابط المحدثة -->
             <a href="https://thsyly4.github.io/q/" class="card">
                 <span class="card-icon">📚</span>
                 <span class="card-title">اختبار تحصيلي - كيمياء</span>
@@ -187,13 +366,85 @@
     </div>
 
     <script>
+        // رابط سكريبت جوجل المربوط بجدول البيانات الخاص بك
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzLwvVKM5n6yzU6OQDoVhjtU0eCTLCZT7M3xdWs8faEudkZknIhhRjosI3HoFlxxLL1Kg/exec";
         const SEARCH_URL = "https://www.google.com/search?udm=50&aep=43&cud=0&qsubts=1775455999140";
-        
+
+        window.onload = function() {
+            const savedName = localStorage.getItem('chemistry_student_name');
+            if (savedName) {
+                showPortal(savedName);
+            }
+        };
+
+        function loginStudent() {
+            const idInput = document.getElementById('student-id').value.trim();
+            const passInput = document.getElementById('student-pass').value.trim();
+            const errorDiv = document.getElementById('login-error');
+            const btnText = document.getElementById('btn-text');
+            const spinner = document.getElementById('btn-spinner');
+            const btnLogin = document.getElementById('btn-login');
+
+            errorDiv.style.display = 'none';
+
+            if (!idInput || !passInput) {
+                alert("يرجى إدخال الرقم الأكاديمي وكلمة المرور.");
+                return;
+            }
+
+            // إظهار مؤشر التحميل
+            btnText.innerText = "جاري التحقق...";
+            spinner.style.display = "block";
+            btnLogin.disabled = true;
+
+            // إرسال الطلب لجدول البيانات عبر Apps Script
+            fetch(`${SCRIPT_URL}?id=${encodeURIComponent(idInput)}&pass=${encodeURIComponent(passInput)}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        localStorage.setItem('chemistry_student_name', data.name);
+                        showPortal(data.name);
+                    } else {
+                        errorDiv.style.display = 'block';
+                    }
+                })
+                .catch(err => {
+                    console.error("Error:", err);
+                    alert("حدث خطأ في الاتصال بالجدول، يرجى المحاولة مرة أخرى.");
+                })
+                .finally(() => {
+                    btnText.innerText = "دخول البوابة 🚀";
+                    spinner.style.display = "none";
+                    btnLogin.disabled = false;
+                });
+        }
+
+        function showPortal(name) {
+            document.getElementById('login-modal').style.display = 'none';
+            document.getElementById('student-label').innerText = name;
+            document.getElementById('user-display').style.display = 'flex';
+        }
+
+        function logoutStudent() {
+            localStorage.removeItem('chemistry_student_name');
+            document.getElementById('login-modal').style.display = 'flex';
+            document.getElementById('user-display').style.display = 'none';
+            document.getElementById('student-id').value = '';
+            document.getElementById('student-pass').value = '';
+        }
+
         function executeSearch() {
             const q = document.getElementById('ai-query').value.trim();
-            window.open(SEARCH_URL + (q ? "&q=" + encodeURIComponent("اشرح لي هذا سؤال: " + q) : ""), "_blank");
+            const targetUrl = q ? SEARCH_URL + "&q=" + encodeURIComponent("اشرح لي هذا سؤال: " + q) : SEARCH_URL;
+            window.open(targetUrl, "_blank");
         }
-        
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                executeSearch();
+            }
+        }
+
         function openCamera() { 
             window.open(SEARCH_URL, "_blank"); 
         }
